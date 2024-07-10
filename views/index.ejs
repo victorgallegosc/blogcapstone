@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="styles/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="pageTitle">
+        <h1 class="title">Postinger</h1>
+      </div>
+
+      <form id="postForm" action="/submit" method="post">
+        <h3>What are you thinking?</h3>
+        <div id="postFormData">
+          <div class="fname-div">
+            <p>First name</p>
+            <input type="text" name="fname"/>
+          </div>
+          <div class="lname-div">
+            <p>Last name</p>
+            <input type="text" name="lname" />
+          </div>
+        </div>
+        <div id="postFormText">
+          <p>What are you thinking?</p>
+          <textarea class="text-regular" name="ptext"></textarea>
+        </div>
+        <button type="submit">Post</button>
+      </form>
+
+      <% if(locals.postsToShow.length > 0) { %>
+      <div class="posts">
+        <h1>Home</h1>
+        <p> <%= locals.postsToShow.length %> post(s)</>
+        <% for(let i = locals.postsToShow.length - 1; i >= 0; i--) { %>
+        <div class="post">
+          <div class="post-author">
+            <h3>
+              <%= locals.postsToShow[i].fname %> <%= locals.postsToShow[i].lname
+              %>
+            </h3>
+          </div>
+          <div class="post-content">
+            <p name="postContent"><%= locals.postsToShow[i].ptext %></p>
+          </div>
+          <div class="post-buttons">
+            <button name="edit-button" onclick="getPostData()">Edit</button>
+            <button name="delete-button">Delete</button>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <% } else { %>
+      <h3>It's so lonely here, post something!</h3>
+      <% } %>
+    </div>
+    <script src="functions/scripts.js"></script>
+  </body>
+</html>

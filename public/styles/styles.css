@@ -1,0 +1,127 @@
+:root {
+  --color-primary: rgb(29, 85, 61);
+  --color-secondary: rgb(46, 131, 94);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.text-regular,
+p {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.text-bold,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.title {
+  font-family: "Baskervville SC", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+button {
+  align-self: flex-end;
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0px 20px;
+  height: 30px;
+}
+@media (max-width: 839px) {
+  .posts,
+  #postForm {
+    width: 80%;
+  }
+}
+
+@media (min-width: 840px) {
+  .posts {
+    width: 60%;
+    max-width: 900px;
+  }
+  #postForm {
+    width: 60%;
+    max-width: 900px;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#pageTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: white;
+  margin-bottom: 20px;
+  height: 100px;
+  width: 100%;
+}
+#postForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid;
+}
+#postForm input,
+#postForm textarea {
+  border-radius: 10px;
+  border: 1px solid;
+}
+#postFormData {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+#postFormData input {
+  height: 25px;
+}
+#postFormText textarea {
+  padding: 10px;
+  height: 100px;
+  width: 100%;
+}
+#postForm h3 {
+  margin: 0;
+}
+.fname-div p,
+.lname-div p,
+#postFormText p {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.posts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.posts h1 {
+  margin-bottom: -25px;
+}
+.post {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+.post-buttons {
+    display: flex;
+    justify-content: end;
+    column-gap: 10px;
+}
