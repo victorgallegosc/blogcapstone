@@ -26,16 +26,30 @@ app.post("/submit", (req, res, next) => {
   next();
 });
 
-app.put("/edit", (req, res, next) => {
-    posts[postToEdit].put(req.body);
-    postsToShow = posts;
-    console.log(posts);
-    res.render("index.ejs", {
-        postsToShow: posts,
-    })
-    resetPostFormData();
-    next();
+app.post("/edit", (req, res, next) => {
+  const originalPostId = req.body.originalPostId;
+  if (originalPostId) {
+    posts.splice(originalPostId, 1);
+  }
+  posts.push(req.body);
+  postsToShow = posts;
+  console.log(posts);
+  res.render("index.ejs", {
+    postsToShow: posts,
   });
+  next();
+});
+
+
+app.post("/delete", (req, res, next) => {
+  const postId = parseInt(req.body.id, 10);
+    if (postId >= 0 && postId < postsToShow.length) {
+        posts.splice(postId, 1);
+    }
+    postsToShow = posts;
+    res.redirect('/');
+    next()
+})
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`);
